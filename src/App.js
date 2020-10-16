@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
+import Game from './components/Game'
 
 class App extends React.Component {
+  
   render(){
     return (
-      <div>App</div>
+      <div>
+        <Game />
+      </div>
     )
   }
 }
