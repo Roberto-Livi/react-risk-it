@@ -15,37 +15,47 @@ class Game extends React.Component {
 
     handleOnChange = (event) => {
         this.setState({ chosenAmount: event.target.value})
-        console.log(this.state.chosenAmount)
     }
 
     onSubmit = (event) => {
         event.preventDefault()
         let { currentScore, chosenAmount, randomScore } = this.state
+        let summedAmount;
         if(parseInt(chosenAmount) < randomScore &&  currentScore < randomScore) {
-            this.setState({ currentScore: currentScore += parseInt(chosenAmount) })
+            summedAmount = currentScore += parseInt(chosenAmount)
+            this.setState({ currentScore: summedAmount})
         } else {
             this.setState({ currentScore: 0 })
         }
+
     }
+
 
     render() {
         return (
             <div>
+                <div className="ui container">
                 {this.state.randomScore}
                 <form onSubmit={this.onSubmit}>
 
-                <input 
-                    type="text"
-                    value={this.state.chosenAmount}
-                    onChange={(e) => this.handleOnChange(e)}
-                />
+                <div className="ui right labeled input">
+                    <label for="amount" className="ui label">$</label>
+                    <input 
+                        type="text"
+                        value={this.state.chosenAmount}
+                        onChange={(e) => this.handleOnChange(e)}
+                        placeholder="Amount"
+                    />
+                </div>
 
-                <button type="submit">Submit</button>
+                <button style={{ backgroundColor: "lightgreen", padding: "10px" }} type="submit">Submit</button>
 
                 </form>
 
         <p>{this.state.currentScore}</p>
-            </div>
+
+        </div>
+        </div>
         )
     }
 }
