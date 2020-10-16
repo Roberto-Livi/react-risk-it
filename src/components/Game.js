@@ -3,14 +3,14 @@ import React from 'react'
 class Game extends React.Component {
 
     state = {
-        currentScore: null,
+        currentScore: 0,
         randomScore: 0,
-        totalScore: null,
-        chosenAmount: null
+        totalScore: 0,
+        chosenAmount: 0
     }
 
     componentDidMount() {
-        this.setState({ randomScore: Math.floor((Math.random() * 100) + 1)})
+        this.setState({ randomScore: Math.floor((Math.random() * 1000) + 1)})
     }
 
     handleOnChange = (event) => {
@@ -20,8 +20,11 @@ class Game extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        if(this.state.chosenAmount < this.state.randomScore) {
-            
+        let { currentScore, chosenAmount, randomScore } = this.state
+        if(parseInt(chosenAmount) < randomScore &&  currentScore < randomScore) {
+            this.setState({ currentScore: currentScore += parseInt(chosenAmount) })
+        } else {
+            this.setState({ currentScore: 0 })
         }
     }
 
@@ -40,6 +43,8 @@ class Game extends React.Component {
                 <button type="submit">Submit</button>
 
                 </form>
+
+        <p>{this.state.currentScore}</p>
             </div>
         )
     }
