@@ -1,5 +1,7 @@
 import React from 'react'
 import Game from './Game'
+import users from '../api/users'
+ 
 
 class Login extends React.Component {
 
@@ -17,11 +19,20 @@ class Login extends React.Component {
         this.setState({ loggedIn: true })
     }
 
+    createUser = (name, s) => {
+        console.log("CREATE_USER")
+        const newUser = {
+            username: name,
+            score: s 
+        }
+        users.post('/users', newUser)
+    }
+
     render() {
         return (
             <div>
                 { this.state.loggedIn ? 
-                <Game username={this.state.username}/> :
+                <Game createUser={this.createUser} username={this.state.username}/> :
                 
                 <form className="ui form" onSubmit={this.onSubmit} 
                 style={{position: "relative", width: "40vw", left: "300px", top: "200px"}}>

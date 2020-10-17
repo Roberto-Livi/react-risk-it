@@ -5,13 +5,13 @@ class Game extends React.Component {
     state = {
         currentScore: 0,
         randomScore: 0,
-        bankAccount: 0,
+        totalScore: 0,
         chosenAmount: 0,
         counter: 0
     }
 
     componentDidMount() {
-        this.setState({ randomScore: Math.floor((Math.random() * 1000) + 1)})
+        this.updateRandomNumber()
     }
 
     handleOnChange = (event) => {
@@ -20,23 +20,35 @@ class Game extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        let { currentScore, chosenAmount, randomScore, bankAccount, counter } = this.state
+        let { currentScore, chosenAmount, randomScore, totalScore, counter } = this.state
         let summedAmount = currentScore += parseInt(chosenAmount)
         let takeOut;
         if(parseInt(chosenAmount) < randomScore &&  summedAmount < randomScore) {
             this.setState({ currentScore: summedAmount })
         } else {
-            takeOut = bankAccount -= currentScore
-            this.setState({ currentScore: 0, bankAccount: takeOut, counter: counter += 1 })
+            takeOut = totalScore -= currentScore
+            this.setState({ currentScore: 0, totalScore: takeOut, counter: counter += 1 })
+            this.updateRandomNumber()
         }
 
     }
 
     onDeposit = (event) => {
         event.preventDefault()
-        let { currentScore, bankAccount, counter } = this.state
-        let amount = (bankAccount += currentScore)
-        this.setState({ bankAccount: amount, currentScore: 0, counter: counter += 1 })
+        let { currentScore, totalScore, counter } = this.state
+        let amount = (totalScore += currentScore)
+        this.setState({ totalScore: amount, currentScore: 0, counter: counter += 1 })
+
+        if(counter > 5){
+            this.props.createUser(this.props.username, totalScore)
+            this.setState({ totalScore: 0, counter: 0 })
+        }
+
+        this.updateRandomNumber()
+    }
+
+    updateRandomNumber = () => {
+        this.setState({ randomScore: Math.floor((Math.random() * 1000) + 1)})
     }
 
 
@@ -61,7 +73,7 @@ class Game extends React.Component {
                             Bank Account
                     </div>
                     <div className="value">
-                            ${this.state.bankAccount}
+                            ${this.state.totalScore}
                     </div>
                 </div>
 
