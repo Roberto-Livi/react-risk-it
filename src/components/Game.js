@@ -45,9 +45,9 @@ class Game extends React.Component {
             <div>
 
                 {console.log(this.state.randomScore)}
-        <h1>{this.props.username}</h1>
+                <h1 style={{padding: "10px"}}>{this.props.username}</h1>
             
-                <div style={{ position: "relative", left: "800px", top: "200px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "400px", top: "150px" }} className="ui statistic">
                     <div className="value">
                            {this.state.currentScore}
                     </div>
@@ -56,7 +56,7 @@ class Game extends React.Component {
                     </div>
                 </div>
 
-                <div style={{ position: "relative", left: "950px", top: "160px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "600px", top: "100px" }} className="ui statistic">
                     <div className="label">
                             Bank Account
                     </div>
@@ -66,7 +66,7 @@ class Game extends React.Component {
                 </div>
 
             <div className="ui statistics">
-            <div className="red statistic" style={{position: "relative", left: "1300px", top: "80px"}}>
+            <div className="red statistic" style={{position: "relative", left: "950px", top: "20px"}}>
                 <div className="value">
                     {this.state.counter}
                 </div>
@@ -76,7 +76,7 @@ class Game extends React.Component {
             </div>
             </div>
 
-                <div style={{ position: "relative", left: "600px", top: "150px" }} className="ui container">
+                <div style={{ position: "relative", left: "230px", top: "80px" }} className="ui container">
 
                 <form onSubmit={this.onSubmit}>
 
@@ -100,7 +100,7 @@ class Game extends React.Component {
                 </form>
 
                 <form onSubmit={this.onDeposit}>
-                    <div style={{ position: "relative", top: "70px", left: "100px"}}>
+                    <div style={{ position: "relative", top: "40px", left: "90px"}}>
                         <button 
                         style={{ backgroundColor: "lightblue" }} type="submit" className="ui button">
                             Deposit
