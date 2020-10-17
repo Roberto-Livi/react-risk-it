@@ -36,8 +36,6 @@ class Game extends React.Component {
         event.preventDefault()
         let { currentScore, bankAccount, counter } = this.state
         let amount = (bankAccount += currentScore)
-        // let taxes = (amount * 0.3)
-        // let netPay = amount - taxes
         this.setState({ bankAccount: amount, currentScore: 0, counter: counter += 1 })
     }
 
@@ -48,7 +46,7 @@ class Game extends React.Component {
 
                 {console.log(this.state.randomScore)}
             
-                <div style={{ position: "absolute", left: "450px", top: "200px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "800px", top: "200px" }} className="ui statistic">
                     <div className="value">
                            {this.state.currentScore}
                     </div>
@@ -57,7 +55,7 @@ class Game extends React.Component {
                     </div>
                 </div>
 
-                <div style={{ position: "absolute", left: "800px", top: "250px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "950px", top: "160px" }} className="ui statistic">
                     <div className="label">
                             Bank Account
                     </div>
@@ -67,7 +65,7 @@ class Game extends React.Component {
                 </div>
 
             <div className="ui statistics">
-            <div className="red statistic" style={{position: "absolute", left: "1050px", top: "265px"}}>
+            <div className="red statistic" style={{position: "relative", left: "1300px", top: "80px"}}>
                 <div className="value">
                     {this.state.counter}
                 </div>
@@ -77,7 +75,7 @@ class Game extends React.Component {
             </div>
             </div>
 
-                <div style={{ position: "absolute", left: "350px", top: "330px" }} className="ui container">
+                <div style={{ position: "relative", left: "600px", top: "150px" }} className="ui container">
 
                 <form onSubmit={this.onSubmit}>
 
@@ -101,7 +99,7 @@ class Game extends React.Component {
                 </form>
 
                 <form onSubmit={this.onDeposit}>
-                    <div style={{ position: "absolute", top: "70px", left: "100px"}}>
+                    <div style={{ position: "relative", top: "70px", left: "100px"}}>
                         <button 
                         style={{ backgroundColor: "lightblue" }} type="submit" className="ui button">
                             Deposit
