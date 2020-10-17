@@ -1,9 +1,11 @@
 import React from 'react'
+import Game from './Game'
 
 class Login extends React.Component {
 
     state = {
-        username: ''
+        username: '',
+        loggedIn: false
     }
 
     handleOnChange = (event) => {
@@ -12,24 +14,32 @@ class Login extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        this.setState({ username: event.target.value})
-        console.log(this.state.username)
+        this.setState({ loggedIn: true })
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                { this.state.loggedIn ? 
+                <Game username={this.state.username}/> :
+                
+                <form className="ui form" onSubmit={this.onSubmit} 
+                style={{position: "relative", width: "40vw", left: "300px", top: "200px"}}>
+
+                <div className="field">
+                    <label>Enter Username</label>
                     <input 
                         type="text"
                         value={this.state.username}
                         onChange={(e) => this.handleOnChange(e)}
                     />
+                </div>
 
-                    <button type="submit" className="ui button">
-
+                    <button type="submit" className="ui button" style={{position: "relative", left: "170px"}}>
+                        Submit
                     </button>
                 </form>
+                }
             </div>
         )
     }

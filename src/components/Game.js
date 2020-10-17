@@ -45,6 +45,7 @@ class Game extends React.Component {
             <div>
 
                 {console.log(this.state.randomScore)}
+        <h1>{this.props.username}</h1>
             
                 <div style={{ position: "relative", left: "800px", top: "200px" }} className="ui statistic">
                     <div className="value">
