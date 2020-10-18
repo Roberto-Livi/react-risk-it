@@ -62,11 +62,21 @@ class Game extends React.Component {
         return (
             <div>
                 {console.log(this.state.randomScore)}
+                <div style ={{
+                    backgroundColor: "white",
+                    position: "relative",
+                    top: "100px",
+                    left: "150px",
+                    width: "80vw",
+                    height: "36vw",
+                    borderRadius: "15px"
+                }} className="ui container">
+
                 <h1 
-                style={{padding: "10px", position: "absolute", left: "800px", top: "400px"
+                style={{padding: "10px", position: "relative", left: "370px", top: "10px"
                 }}>{this.props.username}</h1>
             
-                <div style={{ position: "relative", left: "400px", top: "150px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "200px", top: "70px" }} className="ui statistic">
                     <div className="value">
                            {this.state.currentScore}
                     </div>
@@ -75,7 +85,7 @@ class Game extends React.Component {
                     </div>
                 </div>
 
-                <div style={{ position: "relative", left: "600px", top: "100px" }} className="ui statistic">
+                <div style={{ position: "relative", left: "400px", top: "30px" }} className="ui statistic">
                     <div className="label">
                             Bank Account
                     </div>
@@ -85,7 +95,7 @@ class Game extends React.Component {
                 </div>
 
             <div className="ui statistics">
-            <div className="red statistic" style={{position: "relative", left: "950px", top: "20px"}}>
+            <div className="red statistic" style={{position: "absolute", left: "700px", top: "160px"}}>
                 <div className="value">
                     {this.state.counter}
                 </div>
@@ -95,7 +105,7 @@ class Game extends React.Component {
             </div>
             </div>
 
-                <div style={{ position: "absolute", left: "320px", top: "320px" }} className="ui container">
+                <div style={{ position: "absolute", left: "120px", top: "250px" }} className="ui container">
 
                 <form onSubmit={this.onSubmit}>
 
@@ -127,6 +137,7 @@ class Game extends React.Component {
                     </div>
                 </form>
 
+                </div>
 
                 </div>
 

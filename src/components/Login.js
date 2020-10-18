@@ -1,6 +1,7 @@
 import React from 'react'
 import Game from './Game'
 import users from '../api/users'
+import '../index.css'
  
 
 class Login extends React.Component {
@@ -35,18 +36,25 @@ class Login extends React.Component {
                 { this.state.loggedIn ? 
                 <Game createUser={this.createUser} username={this.state.username}/> :
                 
-                <div>
+                <div style={{backgroundColor: "white", 
+                width: "65vw", 
+                height: "40vw",
+                position: "relative",
+                top: "40px",
+                borderRadius: "15px"
+                }} 
+                className="ui container">
                 <div style={{ fontSize: "80px", 
-                    color: "green", 
-                    position: "absolute", 
-                    left: "37vw",
-                    top: "10vw"
+                    color: "green",
+                    position: "relative", 
+                    left: "22vw",
+                    top: "5vw"
                     }}>
                     Risk It
                 </div>
 
                 <form className="ui form" onSubmit={this.onSubmit} 
-                style={{position: "relative", width: "40vw", left: "28vw", top: "20vw"}}>
+                style={{position: "relative", width: "40vw", left: "12vw", top: "17vw"}}>
 
                 <div className="field">
                     <label>Enter Username</label>

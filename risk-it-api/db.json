@@ -49,6 +49,16 @@
       "username": "Rex",
       "score": -1800,
       "id": 10
+    },
+    {
+      "username": "Reginald",
+      "score": 620,
+      "id": 11
+    },
+    {
+      "username": "David",
+      "score": 2290,
+      "id": 12
     }
   ]
 }
