@@ -62,7 +62,9 @@ class Game extends React.Component {
         return (
             <div>
                 {console.log(this.state.randomScore)}
-                <h1 style={{padding: "10px"}}>{this.props.username}</h1>
+                <h1 
+                style={{padding: "10px", position: "absolute", left: "800px", top: "400px"
+                }}>{this.props.username}</h1>
             
                 <div style={{ position: "relative", left: "400px", top: "150px" }} className="ui statistic">
                     <div className="value">

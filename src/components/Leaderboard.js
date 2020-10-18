@@ -13,7 +13,7 @@ class Leaderboard extends React.Component {
     }
 
     renderTopTen = () => {
-        return this.state.users.sort((a, b) => b.score - a.score)
+        return this.state.users.sort((a, b) => b.score - a.score).slice(0,10)
     }
 
     render() {
@@ -28,19 +28,21 @@ class Leaderboard extends React.Component {
                         top: "10px"
                         }} className="ui celled table">
                     <tr>
-                        <th style={{textAlign: "center", 
+                        <th style={{ 
                             backgroundColor: "deepskyblue",
                             padding: "10px",
                             fontSize: "20px"}} colSpan="2">Leaderboard</th>
                     </tr>
 
                     <tr style={{backgroundColor: "cyan"}}>
+                        <th>Rank</th>
                         <th>User</th>
                         <th>Score</th>
                     </tr>
 
-                        {this.renderTopTen().map(data =>
+                        {this.renderTopTen().map((data, index) =>
                             <tr>
+                                <td>{index + 1}</td>
                                 <td>{data.username}</td>
                                 <td>{data.score}</td>
                             </tr>
