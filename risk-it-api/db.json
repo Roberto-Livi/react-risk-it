@@ -1,3 +1,49 @@
 {
-    "users": []
+  "users": [
+    {
+      "username": "Joe",
+      "score": 1840,
+      "id": 1
+    },
+    {
+      "username": "Joe",
+      "score": -290,
+      "id": 2
+    },
+    {
+      "username": "Natsuki Subaru",
+      "score": 2010,
+      "id": 3
+    },
+    {
+      "username": "Rob Soda",
+      "score": -4150,
+      "id": 4
+    },
+    {
+      "username": "Rob Soda",
+      "score": 1050,
+      "id": 5
+    },
+    {
+      "username": "Gojou",
+      "score": 2225,
+      "id": 6
+    },
+    {
+      "username": "Aizen",
+      "score": -1700,
+      "id": 7
+    },
+    {
+      "username": "Ywach",
+      "score": -1440,
+      "id": 8
+    },
+    {
+      "username": "Kenpachi",
+      "score": 2260,
+      "id": 9
+    }
+  ]
 }

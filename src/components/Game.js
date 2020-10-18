@@ -1,4 +1,5 @@
 import React from 'react'
+import Leaderboard from './Leaderboard'
 
 class Game extends React.Component {
 
@@ -31,6 +32,11 @@ class Game extends React.Component {
             this.updateRandomNumber()
         }
 
+        if(counter > 5){
+            this.props.createUser(this.props.username, totalScore)
+            this.setState({ totalScore: 0, counter: 0 })
+        }
+
     }
 
     onDeposit = (event) => {
@@ -55,7 +61,7 @@ class Game extends React.Component {
     render() {
         return (
             <div>
-
+                <Leaderboard />
                 {console.log(this.state.randomScore)}
                 <h1 style={{padding: "10px"}}>{this.props.username}</h1>
             
