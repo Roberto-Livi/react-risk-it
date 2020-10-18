@@ -61,7 +61,6 @@ class Game extends React.Component {
     render() {
         return (
             <div>
-                <Leaderboard />
                 {console.log(this.state.randomScore)}
                 <h1 style={{padding: "10px"}}>{this.props.username}</h1>
             
@@ -94,7 +93,7 @@ class Game extends React.Component {
             </div>
             </div>
 
-                <div style={{ position: "relative", left: "230px", top: "80px" }} className="ui container">
+                <div style={{ position: "absolute", left: "320px", top: "320px" }} className="ui container">
 
                 <form onSubmit={this.onSubmit}>
 
@@ -128,6 +127,8 @@ class Game extends React.Component {
 
 
                 </div>
+
+                <Leaderboard />
         </div>
         )
     }

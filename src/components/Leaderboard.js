@@ -23,7 +23,7 @@ class Leaderboard extends React.Component {
                         border: "3px solid black", 
                         width: "7vw", padding: "10px", 
                         backgroundColor: "mintcream",
-                        position: "relative",
+                        position: "absolute",
                         left: "10px",
                         top: "10px"
                         }} className="ui celled table">
