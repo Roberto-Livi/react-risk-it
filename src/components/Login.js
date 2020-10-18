@@ -31,11 +31,22 @@ class Login extends React.Component {
     render() {
         return (
             <div>
+
                 { this.state.loggedIn ? 
                 <Game createUser={this.createUser} username={this.state.username}/> :
                 
+                <div>
+                <div style={{ fontSize: "80px", 
+                    color: "green", 
+                    position: "absolute", 
+                    left: "37vw",
+                    top: "10vw"
+                    }}>
+                    Risk It
+                </div>
+
                 <form className="ui form" onSubmit={this.onSubmit} 
-                style={{position: "relative", width: "40vw", left: "300px", top: "200px"}}>
+                style={{position: "relative", width: "40vw", left: "28vw", top: "20vw"}}>
 
                 <div className="field">
                     <label>Enter Username</label>
@@ -50,6 +61,7 @@ class Login extends React.Component {
                         Submit
                     </button>
                 </form>
+                </div>
                 }
             </div>
         )
