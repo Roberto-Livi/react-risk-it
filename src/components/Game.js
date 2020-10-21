@@ -5,10 +5,11 @@ class Game extends React.Component {
 
     state = {
         currentScore: 0,
-        randomScore: 0,
+        ghostNumber: 0,
         totalScore: 0,
         chosenAmount: 0,
-        counter: 0
+        counter: 0,
+        previousNum: 0
     }
 
     componentDidMount() {
@@ -21,10 +22,10 @@ class Game extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        let { currentScore, chosenAmount, randomScore, totalScore, counter } = this.state
+        let { currentScore, chosenAmount, ghostNumber, totalScore, counter } = this.state
         let summedAmount = currentScore += parseInt(chosenAmount)
         let takeOut;
-        if(parseInt(chosenAmount) < randomScore &&  summedAmount < randomScore) {
+        if(parseInt(chosenAmount) < ghostNumber &&  summedAmount < ghostNumber) {
             this.setState({ currentScore: summedAmount })
         } else {
             takeOut = totalScore -= currentScore
@@ -54,14 +55,40 @@ class Game extends React.Component {
     }
 
     updateRandomNumber = () => {
-        this.setState({ randomScore: Math.floor((Math.random() * 1000) + 1)})
+        this.previousGhostNumber(this.state.ghostNumber)
+        this.setState({ ghostNumber: Math.floor((Math.random() * 1000) + 1)})
+    }
+
+    previousGhostNumber = (num) => {
+        this.setState({ previousNum: num})
     }
 
 
     render() {
         return (
             <div>
-                {console.log(this.state.randomScore)}
+
+            <div className="ui container" style={{
+                backgroundColor: "lightblue",
+                position: "relative",
+                left: "30vw",
+                width: "12vw",
+                border: "3px solid black",
+                padding: "5px"
+            }}>
+                <div className="ui statistics">
+                    <div className="statistic">
+                        <div className="value">
+                            {this.state.previousNum}
+                        </div>
+                        <div className="label">
+                            Ghost Number
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                {console.log(this.state.ghostNumber)}
                 <div style ={{
                     backgroundColor: "white",
                     position: "relative",
