@@ -70,13 +70,14 @@ class Game extends React.Component {
 
             <div className="ui container" style={{
                 backgroundColor: "lightblue",
-                position: "relative",
-                left: "30vw",
-                width: "12vw",
+                position: "absolute",
+                left: "1000px",
+                width: "30vw",
+                top: "10px",
                 border: "3px solid black",
                 padding: "5px"
             }}>
-                <div className="ui statistics">
+                <div style={{position: "relative", left:"40px"}} className="ui statistics">
                     <div className="statistic">
                         <div className="value">
                             {this.state.previousNum}
@@ -92,7 +93,7 @@ class Game extends React.Component {
                 <div style ={{
                     backgroundColor: "white",
                     position: "relative",
-                    top: "100px",
+                    top: "130px",
                     left: "150px",
                     width: "80vw",
                     height: "36vw",
