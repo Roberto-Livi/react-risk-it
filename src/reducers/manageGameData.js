@@ -1,3 +1,14 @@
+import { 
+    LOG_IN,
+    LOGGED_IN,
+    CURRENT_SCORE,
+    GHOST_NUMBER,
+    TOTAL_SCORE,
+    CHOSEN_AMOUNT,
+    COUNTER,
+    PREVIOUS_NUM
+} from '../actions/types'
+
 export default (state = { 
     username: '',
     loggedIn: false,

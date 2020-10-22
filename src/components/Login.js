@@ -1,40 +1,43 @@
 import React from 'react'
 import Game from './Game'
+import { connect } from 'react-redux'
+import { addUsername, logIn, createUser } from '../reducers/manageGameData'
 import users from '../api/users'
 import '../index.css'
  
 
 class Login extends React.Component {
 
-    state = {
-        username: '',
-        loggedIn: false
-    }
+    // state = {
+    //     username: '',
+    //     loggedIn: false
+    // }
 
     handleOnChange = (event) => {
-        this.setState({ username: event.target.value })
+        // this.setState({ username: event.target.value })
+        this.props.addUsername(event.target.value)
     }
 
     onSubmit = (event) => {
         event.preventDefault()
-        this.setState({ loggedIn: true })
+        // this.setState({ loggedIn: true })
+        this.props.logIn(true)
     }
 
-    createUser = (name, s) => {
-        console.log("CREATE_USER")
-        const newUser = {
-            username: name,
-            score: s 
-        }
-        users.post('/users', newUser)
-    }
+    // createUser = (name, num) => {
+    //     const newUser = {
+    //         username: name,
+    //         score: num
+    //     }
+    //     users.post('/users', newUser)
+    // }
 
     render() {
         return (
             <div>
 
                 { this.state.loggedIn ? 
-                <Game createUser={this.createUser} username={this.state.username}/> :
+                <Game username={this.state.username}/> :
                 
                 <div style={{backgroundColor: "white", 
                 width: "65vw", 
@@ -76,4 +79,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default connect(null, { addUsername, logIn })(Login)
