@@ -1,4 +1,6 @@
 export default (state = { 
+    username: '',
+    loggedIn: false,
     currentScore: 0,
     ghostNumber: 0,
     totalScore: 0,
@@ -6,6 +8,10 @@ export default (state = {
     counter: 0,
     previousNum: 0 }, action) => {
         switch(action.type) {
+            case LOG_IN:
+                return { ...state, username: action.payload }
+            case LOGGED_IN:
+                return { ...state, loggedIn: true }
             case CURRENT_SCORE:
                 return { ...state, currentScore: action.payload }
             case GHOST_NUMBER:
