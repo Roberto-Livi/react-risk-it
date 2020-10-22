@@ -1,5 +1,7 @@
 import React from 'react'
 import Leaderboard from './Leaderboard'
+import { createUser } from '../actions/index'
+import { connect } from 'react-redux'
 
 class Game extends React.Component {
 
@@ -175,4 +177,8 @@ class Game extends React.Component {
     }
 }
 
-export default Game
+const mapStateToProps = ({ username }) => {
+    return { username }
+}
+
+export default connect(mapStateToProps, { createUser })(Game)

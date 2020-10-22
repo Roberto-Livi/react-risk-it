@@ -35,5 +35,7 @@ export default (state = {
                 return { ...state, counter: action.payload }
             case PREVIOUS_NUM:
                 return { ...state, previousNum: action.payload }
+            default:
+                return state
         }
     }

@@ -1,8 +1,8 @@
 import React from 'react'
 import Game from './Game'
 import { connect } from 'react-redux'
-import { addUsername, logIn, createUser } from '../reducers/manageGameData'
-import users from '../api/users'
+import { addUsername, logIn } from '../actions/index'
+// import users from '../api/users'
 import '../index.css'
  
 
@@ -36,12 +36,12 @@ class Login extends React.Component {
         return (
             <div>
 
-                { this.state.loggedIn ? 
-                <Game username={this.state.username}/> :
+                { this.props.loggedIn ? 
+                <Game /> :
                 
                 <div style={{backgroundColor: "white", 
                 width: "65vw", 
-                height: "40vw",
+                height: "70vh",
                 position: "relative",
                 top: "40px",
                 borderRadius: "15px"
@@ -63,7 +63,7 @@ class Login extends React.Component {
                     <label>Enter Username</label>
                     <input 
                         type="text"
-                        value={this.state.username}
+                        value={this.props.username}
                         onChange={(e) => this.handleOnChange(e)}
                     />
                 </div>
@@ -79,4 +79,8 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, { addUsername, logIn })(Login)
+const mapStateToProps = ({ username, loggedIn }) => {
+    return { username, loggedIn }
+}
+
+export default connect(mapStateToProps, { addUsername, logIn })(Login)
