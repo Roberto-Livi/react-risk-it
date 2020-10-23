@@ -8,11 +8,9 @@ class Game extends React.Component {
 
     state = {
         currentScore: 0,
-        ghostNumber: 0,
         totalScore: 0,
         chosenAmount: 0,
         counter: 0,
-        previousNum: 0
     }
 
     componentDidMount() {
@@ -68,9 +66,9 @@ class Game extends React.Component {
         this.props.renderGhostNumber(Math.floor((Math.random() * 1000) + 1))
     }
 
-    previousGhostNumber = (num) => {
-        this.setState({ previousNum: num})
-    }
+    // previousGhostNumber = (num) => {
+    //     this.setState({ previousNum: num})
+    // }
 
     createUser = (name, num) => {
         const newUser = {
