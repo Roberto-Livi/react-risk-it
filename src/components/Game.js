@@ -2,6 +2,7 @@ import React from 'react'
 import Leaderboard from './Leaderboard'
 import { connect } from 'react-redux'
 import users from '../api/users'
+import { renderGhostNumber } from '../actions/index'
 
 class Game extends React.Component {
 
@@ -24,7 +25,8 @@ class Game extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        let { currentScore, chosenAmount, ghostNumber, totalScore, counter } = this.state
+        let { currentScore, chosenAmount, totalScore, counter } = this.state
+        let { ghostNumber } = this.props
         let summedAmount = currentScore += parseInt(chosenAmount)
         let takeOut;
         if(parseInt(chosenAmount) < ghostNumber &&  summedAmount < ghostNumber) {
@@ -61,8 +63,9 @@ class Game extends React.Component {
     }
 
     updateRandomNumber = () => {
-        this.previousGhostNumber(this.state.ghostNumber)
-        this.setState({ ghostNumber: Math.floor((Math.random() * 1000) + 1)})
+        this.previousGhostNumber(this.props.ghostNumber)
+        // this.setState({ ghostNumber: Math.floor((Math.random() * 1000) + 1)})
+        this.props.renderGhostNumber(Math.floor((Math.random() * 1000) + 1))
     }
 
     previousGhostNumber = (num) => {
@@ -103,7 +106,7 @@ class Game extends React.Component {
                 </div>
             </div>
 
-                {console.log(this.state.ghostNumber)}
+                {console.log(this.props.ghostNumber)}
                 <div style ={{
                     backgroundColor: "white",
                     position: "relative",
@@ -189,8 +192,8 @@ class Game extends React.Component {
     }
 }
 
-const mapStateToProps = ({ username }) => {
-    return { username }
+const mapStateToProps = ({ username, ghostNumber }) => {
+    return { username, ghostNumber }
 }
 
-export default connect(mapStateToProps)(Game)
+export default connect(mapStateToProps, { renderGhostNumber })(Game)
