@@ -36,7 +36,9 @@ class Game extends React.Component {
         }
 
         if(counter > 5){
-            this.createUser(this.props.username, totalScore)
+            if(totalScore > 2200) {
+                this.createUser(this.props.username, totalScore)
+            }
             this.setState({ totalScore: 0, counter: 0 })
         }
 
@@ -49,7 +51,9 @@ class Game extends React.Component {
         this.setState({ totalScore: amount, currentScore: 0, counter: counter += 1 })
 
         if(counter > 5){
-            this.createUser(this.props.username, totalScore)
+            if(totalScore > 2200) {
+                this.createUser(this.props.username, totalScore)
+            }
             this.setState({ totalScore: 0, counter: 0 })
         }
 
