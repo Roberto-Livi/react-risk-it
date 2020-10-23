@@ -13,10 +13,10 @@ export const logIn = (status) => dispatch => {
     dispatch({ type: LOGGED_IN, payload: status })
 }
 
-export const createUser = (name, num) => {
-    const newUser = {
-        username: name,
-        score: num
-    }
-    users.post('/users', newUser)
-}
+// export const createUser = (name, num) => {
+//     const newUser = {
+//         username: name,
+//         score: num
+//     }
+//     users.post('/users', newUser)
+// }

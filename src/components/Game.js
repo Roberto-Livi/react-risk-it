@@ -1,7 +1,7 @@
 import React from 'react'
 import Leaderboard from './Leaderboard'
-import { createUser } from '../actions/index'
 import { connect } from 'react-redux'
+import users from '../api/users'
 
 class Game extends React.Component {
 
@@ -36,7 +36,7 @@ class Game extends React.Component {
         }
 
         if(counter > 5){
-            this.props.createUser(this.props.username, totalScore)
+            this.createUser(this.props.username, totalScore)
             this.setState({ totalScore: 0, counter: 0 })
         }
 
@@ -49,7 +49,7 @@ class Game extends React.Component {
         this.setState({ totalScore: amount, currentScore: 0, counter: counter += 1 })
 
         if(counter > 5){
-            this.props.createUser(this.props.username, totalScore)
+            this.createUser(this.props.username, totalScore)
             this.setState({ totalScore: 0, counter: 0 })
         }
 
@@ -63,6 +63,14 @@ class Game extends React.Component {
 
     previousGhostNumber = (num) => {
         this.setState({ previousNum: num})
+    }
+
+    createUser = (name, num) => {
+        const newUser = {
+            username: name,
+            score: num
+        }
+        users.post('/users', newUser)
     }
 
 
@@ -181,4 +189,4 @@ const mapStateToProps = ({ username }) => {
     return { username }
 }
 
-export default connect(mapStateToProps, { createUser })(Game)
+export default connect(mapStateToProps)(Game)
