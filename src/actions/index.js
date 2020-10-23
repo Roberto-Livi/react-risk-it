@@ -24,6 +24,12 @@ export const renderGhostNumber = (number) => dispatch => {
     dispatch({ type: GHOST_NUMBER, payload: number })
 }
 
+export const renderPreviousNumber = (number) => dispatch => {
+    dispatch({ type: PREVIOUS_NUM, payload: number })
+}
+
+
+
 
 // export const createUser = (name, num) => {
 //     const newUser = {

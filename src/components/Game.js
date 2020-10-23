@@ -1,8 +1,10 @@
 import React from 'react'
 import Leaderboard from './Leaderboard'
+import GhostNumber from './GhostNumber'
 import { connect } from 'react-redux'
 import users from '../api/users'
-import { renderGhostNumber } from '../actions/index'
+import { renderGhostNumber, renderPreviousNumber } from '../actions/index'
+
 
 class Game extends React.Component {
 
@@ -62,13 +64,12 @@ class Game extends React.Component {
 
     updateRandomNumber = () => {
         this.previousGhostNumber(this.props.ghostNumber)
-        // this.setState({ ghostNumber: Math.floor((Math.random() * 1000) + 1)})
         this.props.renderGhostNumber(Math.floor((Math.random() * 1000) + 1))
     }
 
-    // previousGhostNumber = (num) => {
-    //     this.setState({ previousNum: num})
-    // }
+    previousGhostNumber = (num) => {
+        this.props.renderPreviousNumber(num)
+    }
 
     createUser = (name, num) => {
         const newUser = {
@@ -83,28 +84,8 @@ class Game extends React.Component {
         return (
             <div>
 
-            <div className="ui container" style={{
-                backgroundColor: "lightblue",
-                position: "absolute",
-                left: "1000px",
-                width: "30vw",
-                top: "10px",
-                border: "3px solid black",
-                padding: "5px"
-            }}>
-                <div style={{position: "relative", left:"40px"}} className="ui statistics">
-                    <div className="statistic">
-                        <div className="value">
-                            {this.state.previousNum}
-                        </div>
-                        <div className="label">
-                            Ghost Number
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                {console.log(this.props.ghostNumber)}
+           <GhostNumber />
+           
                 <div style ={{
                     backgroundColor: "white",
                     position: "relative",
@@ -194,4 +175,4 @@ const mapStateToProps = ({ username, ghostNumber }) => {
     return { username, ghostNumber }
 }
 
-export default connect(mapStateToProps, { renderGhostNumber })(Game)
+export default connect(mapStateToProps, { renderGhostNumber, renderPreviousNumber })(Game)

@@ -1,12 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { renderGhostNumber, renderPreviousNumber } from '../actions/index'
 
-class GhostNumber extends React.Component {
+const GhostNumber = (props) => {
 
-    previousGhostNumber = (num) => {
-        this.setState({ previousNum: num})
-    }
-
-    render () {
         return (
             <div className="ui container" style={{
                 backgroundColor: "lightblue",
@@ -20,7 +17,7 @@ class GhostNumber extends React.Component {
                 <div style={{position: "relative", left:"40px"}} className="ui statistics">
                     <div className="statistic">
                         <div className="value">
-                            {this.state.previousNum}
+                            {props.previousNum}
                         </div>
                         <div className="label">
                             Ghost Number
@@ -29,7 +26,10 @@ class GhostNumber extends React.Component {
                 </div>
             </div>
         )
-    }
 }
 
-export default GhostNumber
+const mapStateToProps = ({ ghostNumber, previousNum }) => {
+    return { ghostNumber, previousNum }
+}
+
+export default connect(mapStateToProps, { renderPreviousNumber, renderGhostNumber })(GhostNumber)
