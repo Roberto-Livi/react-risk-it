@@ -100,14 +100,14 @@ class Game extends React.Component {
                 style={{padding: "10px", position: "relative", left: "370px", top: "10px"
                 }}>{this.props.username}</h1>
             
-                <div style={{ position: "relative", left: "200px", top: "70px" }} className="ui statistic">
+                {/* <div style={{ position: "relative", left: "200px", top: "70px" }} className="ui statistic">
                     <div className="value">
                            {this.state.currentScore}
                     </div>
                     <div className="label">
                             Current Score
                     </div>
-                </div>
+                </div> */}
 
                 <div style={{ position: "relative", left: "400px", top: "30px" }} className="ui statistic">
                     <div className="label">
