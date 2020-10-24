@@ -1,15 +1,15 @@
 import React from 'react'
 import Leaderboard from './Leaderboard'
 import GhostNumber from './GhostNumber'
+import CurrentScore from './CurrentScore'
 import { connect } from 'react-redux'
 import users from '../api/users'
-import { renderGhostNumber, renderPreviousNumber } from '../actions/index'
+import { renderGhostNumber, renderPreviousNumber, updateCurrentScore } from '../actions/index'
 
 
 class Game extends React.Component {
 
     state = {
-        currentScore: 0,
         totalScore: 0,
         chosenAmount: 0,
         counter: 0,
@@ -25,15 +25,17 @@ class Game extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        let { currentScore, chosenAmount, totalScore, counter } = this.state
-        let { ghostNumber } = this.props
+        let { chosenAmount, totalScore, counter } = this.state
+        let { ghostNumber, currentScore } = this.props
         let summedAmount = currentScore += parseInt(chosenAmount)
         let takeOut;
         if(parseInt(chosenAmount) < ghostNumber &&  summedAmount < ghostNumber) {
-            this.setState({ currentScore: summedAmount })
+            // this.setState({ currentScore: summedAmount })
+            this.props.updateCurrentScore(summedAmount)
         } else {
             takeOut = totalScore -= currentScore
-            this.setState({ currentScore: 0, totalScore: takeOut, counter: counter += 1 })
+            this.setState({ totalScore: takeOut, counter: counter += 1 })
+            this.props.updateCurrentScore(0)
             this.updateRandomNumber()
         }
 
@@ -48,9 +50,11 @@ class Game extends React.Component {
 
     onDeposit = (event) => {
         event.preventDefault()
-        let { currentScore, totalScore, counter } = this.state
+        let { totalScore, counter } = this.state
+        let { currentScore } = this.props
         let amount = (totalScore += currentScore)
-        this.setState({ totalScore: amount, currentScore: 0, counter: counter += 1 })
+        this.setState({ totalScore: amount, counter: counter += 1 })
+        this.props.updateCurrentScore(0)
 
         if(counter > 5){
             if(totalScore > 2200) {
@@ -100,14 +104,7 @@ class Game extends React.Component {
                 style={{padding: "10px", position: "relative", left: "370px", top: "10px"
                 }}>{this.props.username}</h1>
             
-                {/* <div style={{ position: "relative", left: "200px", top: "70px" }} className="ui statistic">
-                    <div className="value">
-                           {this.state.currentScore}
-                    </div>
-                    <div className="label">
-                            Current Score
-                    </div>
-                </div> */}
+            <CurrentScore />
 
                 <div style={{ position: "relative", left: "400px", top: "30px" }} className="ui statistic">
                     <div className="label">
@@ -171,8 +168,9 @@ class Game extends React.Component {
     }
 }
 
-const mapStateToProps = ({ username, ghostNumber }) => {
-    return { username, ghostNumber }
+const mapStateToProps = ({ username, ghostNumber, currentScore }) => {
+    return { username, ghostNumber, currentScore }
 }
 
-export default connect(mapStateToProps, { renderGhostNumber, renderPreviousNumber })(Game)
+export default connect(mapStateToProps, 
+    { renderGhostNumber, renderPreviousNumber, updateCurrentScore})(Game)

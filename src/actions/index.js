@@ -4,10 +4,10 @@ import {
     LOG_IN,
     LOGGED_IN,
     GHOST_NUMBER,
-    PREVIOUS_NUM
+    PREVIOUS_NUM,
+    CURRENT_SCORE
 } from '../actions/types'
 
-// CURRENT_SCORE
 // TOTAL_SCORE
 // CHOSEN_AMOUNT
 // COUNTER
@@ -26,6 +26,10 @@ export const renderGhostNumber = (number) => dispatch => {
 
 export const renderPreviousNumber = (number) => dispatch => {
     dispatch({ type: PREVIOUS_NUM, payload: number })
+}
+
+export const updateCurrentScore = (number) => dispatch => {
+    dispatch({ type: CURRENT_SCORE, payload: number })
 }
 
 
