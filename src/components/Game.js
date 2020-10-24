@@ -2,9 +2,10 @@ import React from 'react'
 import Leaderboard from './Leaderboard'
 import GhostNumber from './GhostNumber'
 import CurrentScore from './CurrentScore'
+import TotalScore from './TotalScore'
 import { connect } from 'react-redux'
 import users from '../api/users'
-import { renderGhostNumber, renderPreviousNumber, updateCurrentScore } from '../actions/index'
+import { renderGhostNumber, renderPreviousNumber, updateCurrentScore, renderTotalScore } from '../actions/index'
 
 
 class Game extends React.Component {
@@ -30,7 +31,6 @@ class Game extends React.Component {
         let summedAmount = currentScore += parseInt(chosenAmount)
         let takeOut;
         if(parseInt(chosenAmount) < ghostNumber &&  summedAmount < ghostNumber) {
-            // this.setState({ currentScore: summedAmount })
             this.props.updateCurrentScore(summedAmount)
         } else {
             takeOut = totalScore -= currentScore
@@ -106,14 +106,7 @@ class Game extends React.Component {
             
             <CurrentScore />
 
-                <div style={{ position: "relative", left: "400px", top: "30px" }} className="ui statistic">
-                    <div className="label">
-                            Bank Account
-                    </div>
-                    <div className="value">
-                            ${this.state.totalScore}
-                    </div>
-                </div>
+            
 
             <div className="ui statistics">
             <div className="red statistic" style={{position: "absolute", left: "700px", top: "160px"}}>
@@ -173,4 +166,4 @@ const mapStateToProps = ({ username, ghostNumber, currentScore }) => {
 }
 
 export default connect(mapStateToProps, 
-    { renderGhostNumber, renderPreviousNumber, updateCurrentScore})(Game)
+    { renderGhostNumber, renderPreviousNumber, updateCurrentScore, renderTotalScore})(Game)

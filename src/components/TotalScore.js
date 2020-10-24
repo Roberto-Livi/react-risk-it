@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const TotalScore = () => {
+const TotalScore = (props) => {
 
     return (
         <div style={{ position: "relative", left: "400px", top: "30px" }} className="ui statistic">
@@ -9,10 +9,14 @@ const TotalScore = () => {
                 Bank Account
             </div>
             <div className="value">
-                ${this.state.totalScore}
+                ${props.totalScore}
             </div>
         </div>
     )
 }
 
-export default TotalScore
+const mapStateToProps = ({ totalScore }) => {
+    return { totalScore }
+}
+
+export default connect(mapStateToProps)(TotalScore)
