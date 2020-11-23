@@ -59,7 +59,7 @@ class Game extends React.Component {
         this.props.updateCurrentScore(0)
 
         if(counter > 5){
-            if(totalScore > 2200) {
+            if(totalScore > 1550) {
                 this.createUser(this.props.username, totalScore)
             }
             this.setState({ counter: 0 })
@@ -91,8 +91,8 @@ class Game extends React.Component {
         return (
             <div>
 
-           <GhostNumber />
-           
+        <GhostNumber />
+
                 <div style ={{
                     backgroundColor: "white",
                     position: "relative",
