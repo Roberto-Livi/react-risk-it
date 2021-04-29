@@ -2,35 +2,19 @@ import React from 'react'
 import Game from './Game'
 import { connect } from 'react-redux'
 import { addUsername, logIn } from '../actions/index'
-// import users from '../api/users'
 import '../index.css'
- 
+
 
 class Login extends React.Component {
 
-    // state = {
-    //     username: '',
-    //     loggedIn: false
-    // }
-
     handleOnChange = (event) => {
-        // this.setState({ username: event.target.value })
         this.props.addUsername(event.target.value)
     }
 
     onSubmit = (event) => {
         event.preventDefault()
-        // this.setState({ loggedIn: true })
         this.props.logIn(true)
     }
-
-    // createUser = (name, num) => {
-    //     const newUser = {
-    //         username: name,
-    //         score: num
-    //     }
-    //     users.post('/users', newUser)
-    // }
 
     render() {
         return (
@@ -38,7 +22,7 @@ class Login extends React.Component {
 
                 { this.props.loggedIn ? 
                 <Game /> :
-                
+
                 <div style={{backgroundColor: "white", 
                 width: "65vw", 
                 height: "70vh",

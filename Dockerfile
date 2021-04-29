@@ -1,23 +1,33 @@
-# pull official base image
-FROM node:lts-alpine
+# # pull official base image
+# FROM node:lts-alpine
 
-# set working directory
-WORKDIR /app
+# # set working directory
+# WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# # add `/app/node_modules/.bin` to $PATH
+# ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+# # install app dependencies
+# COPY package.json ./
+# COPY package-lock.json ./
+# RUN npm install --silent
+# RUN npm install react-scripts@3.4.1 -g --silent
 
-# add app
-COPY . ./
+# # add app
+# COPY . ./
 
-# start app
-CMD ["npm", "start"]
+# # start app
+# CMD ["npm", "start"]
+
+FROM node:15.8.0-alpine3.10
+WORKDIR /usr/src/app
+COPY package*.json ./
+ADD package.json /usr/src/app/package.json
+RUN npm install
+RUN npm install react-scripts@1.1.0 -g
+COPY . .
+EXPOSE 3000
+CMD ["npm ","start"];
 
 
 

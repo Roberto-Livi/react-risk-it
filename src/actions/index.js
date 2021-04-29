@@ -1,5 +1,3 @@
-// import users from '../api/users'
-
 import {
     LOG_IN,
     LOGGED_IN,
@@ -9,8 +7,6 @@ import {
     TOTAL_SCORE
 } from '../actions/types'
 
-// CHOSEN_AMOUNT
-// COUNTER
 
 export const addUsername = (username) => dispatch => {
     dispatch({ type: LOG_IN, payload: username })
@@ -35,14 +31,3 @@ export const updateCurrentScore = (number) => dispatch => {
 export const renderTotalScore = (number) => dispatch => {
     dispatch({ type: TOTAL_SCORE, payload: number })
 }
-
-
-
-
-// export const createUser = (name, num) => {
-//     const newUser = {
-//         username: name,
-//         score: num
-//     }
-//     users.post('/users', newUser)
-// }
